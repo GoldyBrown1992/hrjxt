@@ -12,356 +12,411 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            color: white;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #000000;
+            color: #ffffff;
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
         .container {
-            max-width: 500px;
+            max-width: 480px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0;
+            min-height: 100vh;
             position: relative;
         }
 
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
+        .hero-section {
             position: relative;
-        }
-
-        .event-image {
-            width: 100%;
-            height: 300px;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
-            background-size: 400% 400%;
-            animation: gradientShift 8s ease infinite;
-            border-radius: 20px;
+            height: 60vh;
+            background: linear-gradient(135deg, #ff0040 0%, #000000 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            margin-bottom: 20px;
-            position: relative;
             overflow: hidden;
         }
 
-        .event-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.2);
-            backdrop-filter: blur(1px);
-        }
-
-        .event-image .text {
-            position: relative;
+        .hero-content {
+            text-align: center;
             z-index: 2;
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            position: relative;
         }
 
         .event-title {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 4px 20px rgba(255, 0, 64, 0.3);
         }
 
         .event-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
+            font-weight: 500;
             opacity: 0.9;
-            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Modern lighting effects */
+        .light-beam {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(255,0,64,0.8) 0%, transparent 100%);
+            transform: translateX(-50%);
+            animation: beam-pulse 3s ease-in-out infinite;
+        }
+
+        .light-beam::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -50px;
+            width: 100px;
+            height: 200px;
+            background: radial-gradient(ellipse, rgba(255,0,64,0.3) 0%, transparent 70%);
+            animation: beam-sweep 8s linear infinite;
+        }
+
+        @keyframes beam-pulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes beam-sweep {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .content-section {
+            padding: 2rem 1.5rem;
+            background: #000000;
+        }
+
+        .info-card {
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid rgba(255, 0, 64, 0.1);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(20px);
         }
 
         .event-details {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
-            border: 1px solid rgba(255,255,255,0.2);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            display: grid;
+            gap: 1rem;
         }
 
-        .detail-item {
+        .detail-row {
             display: flex;
             align-items: center;
-            margin-bottom: 20px;
-            font-size: 1.1rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .detail-item:last-child {
-            margin-bottom: 0;
+        .detail-row:last-child {
+            border-bottom: none;
         }
 
         .detail-icon {
-            font-size: 1.5rem;
-            margin-right: 15px;
-            width: 30px;
+            font-size: 1.2rem;
+            margin-right: 1rem;
+            width: 24px;
             text-align: center;
         }
 
-        .description {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 25px;
-            margin-bottom: 30px;
-            border: 1px solid rgba(255,255,255,0.2);
-            line-height: 1.6;
-            font-size: 1rem;
+        .detail-text {
+            flex: 1;
+            font-size: 0.95rem;
+            font-weight: 500;
         }
 
-        .cta-buttons {
+        .description-card {
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid rgba(255, 0, 64, 0.1);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .description-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #ff0040;
+        }
+
+        .highlights {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .highlights li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .highlights li::before {
+            content: '•';
+            color: #ff0040;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .cta-section {
+            padding: 0 1.5rem 2rem;
+        }
+
+        .btn-group {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 1rem;
         }
 
         .btn {
-            padding: 18px 30px;
+            padding: 1rem 2rem;
             border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: bold;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             text-decoration: none;
             text-align: center;
-            display: block;
-            position: relative;
-            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            letter-spacing: 0.3px;
         }
 
         .btn-primary {
-            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            background: linear-gradient(135deg, #ff0040 0%, #cc0033 100%);
             color: white;
-            box-shadow: 0 4px 15px rgba(255,107,107,0.4);
+            box-shadow: 0 4px 20px rgba(255, 0, 64, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255,107,107,0.6);
+            box-shadow: 0 6px 25px rgba(255, 0, 64, 0.4);
         }
 
         .btn-secondary {
-            background: rgba(255,255,255,0.2);
-            color: white;
-            border: 2px solid rgba(255,255,255,0.3);
-            backdrop-filter: blur(10px);
+            background: transparent;
+            color: #ffffff;
+            border: 1.5px solid rgba(255, 255, 255, 0.2);
         }
 
         .btn-secondary:hover {
-            background: rgba(255,255,255,0.3);
-            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
         }
 
-        .floating-elements {
+        /* Subtle modern animations */
+        .floating-accent {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
+            width: 1px;
+            height: 100px;
+            background: linear-gradient(180deg, rgba(255,0,64,0.4) 0%, transparent 100%);
+            animation: float-accent 6s ease-in-out infinite;
         }
 
-        .floating-element {
-            position: absolute;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .floating-element:nth-child(1) {
-            width: 80px;
-            height: 80px;
+        .floating-accent:nth-child(1) {
             top: 20%;
-            left: 10%;
+            right: 10%;
             animation-delay: 0s;
         }
 
-        .floating-element:nth-child(2) {
-            width: 60px;
-            height: 60px;
+        .floating-accent:nth-child(2) {
             top: 60%;
-            right: 15%;
+            left: 15%;
             animation-delay: 2s;
         }
 
-        .floating-element:nth-child(3) {
-            width: 100px;
-            height: 100px;
+        .floating-accent:nth-child(3) {
             bottom: 20%;
-            left: 20%;
+            right: 20%;
             animation-delay: 4s;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
+        @keyframes float-accent {
+            0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
+            50% { transform: translateY(-20px) scale(1.1); opacity: 0.6; }
         }
 
-        .pulse-bg {
+        .red-glow {
             position: fixed;
-            top: 50%;
-            left: 50%;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(255,107,107,0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            animation: pulse 4s ease-in-out infinite;
-            z-index: -2;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,0,64,0.08) 0%, transparent 70%);
+            animation: glow-pulse 8s ease-in-out infinite;
+            z-index: -1;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
-            50% { transform: translate(-50%, -50%) scale(1.5); opacity: 0.1; }
+        @keyframes glow-pulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
         }
 
+        /* Mobile optimizations */
         @media (max-width: 480px) {
-            .container {
-                padding: 15px;
-            }
-            
             .event-title {
-                font-size: 2rem;
-            }
-            
-            .event-image {
-                height: 250px;
                 font-size: 2.5rem;
             }
+            
+            .hero-section {
+                height: 50vh;
+            }
+            
+            .content-section {
+                padding: 1.5rem 1rem;
+            }
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading animation */
+        .container {
+            animation: fade-in 0.8s ease-out;
+        }
+
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
-    <div class="pulse-bg"></div>
-    <div class="floating-elements">
-        <div class="floating-element"></div>
-        <div class="floating-element"></div>
-        <div class="floating-element"></div>
-    </div>
-
+    <div class="red-glow"></div>
+    
     <div class="container">
-        <div class="header">
-            <div class="event-image">
-                <div class="text">🎵 NIGHT VIBES</div>
-            </div>
-            <h1 class="event-title">✨ NIGHT VIBES ✨</h1>
-            <p class="event-subtitle">Harjxt x Double Up Entertainment</p>
-        </div>
-
-        <div class="event-details">
-            <div class="detail-item">
-                <span class="detail-icon">📅</span>
-                <span>Saturday, October 12th, 2025</span>
-            </div>
-            <div class="detail-item">
-                <span class="detail-icon">🕙</span>
-                <span>10:00 PM - 3:00 AM</span>
-            </div>
-            <div class="detail-item">
-                <span class="detail-icon">📍</span>
-                <span>Downtown Nightclub</span>
-            </div>
-            <div class="detail-item">
-                <span class="detail-icon">🎶</span>
-                <span>Harjxt • Live DJ Set</span>
-            </div>
-            <div class="detail-item">
-                <span class="detail-icon">🎪</span>
-                <span>Double Up Entertainment</span>
-            </div>
-            <div class="detail-item">
-                <span class="detail-icon">👗</span>
-                <span>Dress Code: Upscale Nightclub</span>
-            </div>
-        </div>
-
-        <div class="description">
-            Get ready for the ultimate nightclub experience as Harjxt takes the stage with Double Up Entertainment! 
+        <section class="hero-section">
+            <div class="light-beam"></div>
+            <div class="floating-accent"></div>
+            <div class="floating-accent"></div>
+            <div class="floating-accent"></div>
             
-            This isn't just another night out – it's a carefully curated experience featuring the hottest beats, 
-            premium cocktails, and an atmosphere that defines modern nightlife.
-            
-            🔥 Featured Artist: <strong>Harjxt</strong> bringing exclusive tracks and high-energy performances
-            🥂 Premium bar service with signature cocktails  
-            💃 State-of-the-art sound system and lighting
-            🌟 VIP bottle service available
-            📸 Professional photography capturing the night
-            
-            Join Vancouver's most exclusive crowd for a night that will redefine your nightclub expectations.
-        </div>
+            <div class="hero-content">
+                <h1 class="event-title">NIGHT VIBES</h1>
+                <p class="event-subtitle">Harjxt × Double Up Entertainment</p>
+            </div>
+        </section>
 
-        <div class="cta-buttons">
-            <a href="#" class="btn btn-primary" onclick="handleRSVP()">🎫 RSVP NOW - Early Bird</a>
-            <a href="#" class="btn btn-secondary" onclick="handleVIP()">⭐ VIP Table Booking</a>
-            <a href="#" class="btn btn-secondary" onclick="handleShare()">📱 Share Event</a>
-        </div>
+        <section class="content-section">
+            <div class="info-card">
+                <div class="event-details">
+                    <div class="detail-row">
+                        <span class="detail-icon">📅</span>
+                        <span class="detail-text">Saturday, October 12th</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-icon">🕚</span>
+                        <span class="detail-text">10:00 PM - 3:00 AM</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-icon">📍</span>
+                        <span class="detail-text">Downtown Nightclub</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-icon">🎵</span>
+                        <span class="detail-text">Live DJ Performance</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-icon">👔</span>
+                        <span class="detail-text">Upscale Dress Code</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="description-card">
+                <h3 class="description-title">The Ultimate Nightclub Experience</h3>
+                <p>Join us for an unforgettable night as Harjxt takes the stage with Double Up Entertainment. This exclusive event brings together cutting-edge music, premium service, and an atmosphere that defines modern nightlife.</p>
+                
+                <ul class="highlights">
+                    <li>Exclusive live performance by Harjxt</li>
+                    <li>Premium cocktail service & VIP options</li>
+                    <li>State-of-the-art sound & lighting system</li>
+                    <li>Professional event photography</li>
+                    <li>Limited capacity for intimate experience</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="btn-group">
+                <button class="btn btn-primary" onclick="handleRSVP()">
+                    🎫 Reserve Your Spot
+                </button>
+                <button class="btn btn-secondary" onclick="handleVIP()">
+                    ⭐ VIP Table Booking
+                </button>
+                <button class="btn btn-secondary" onclick="handleShare()">
+                    📱 Share Event
+                </button>
+            </div>
+        </section>
     </div>
 
     <script>
         function handleRSVP() {
-            // This would integrate with your Shopify checkout or booking system
-            alert('RSVP functionality - integrate with Shopify or booking system!');
-            // Example: window.location.href = 'https://your-shop.myshopify.com/products/night-vibes-ticket';
+            // Integration with Shopify or booking system
+            console.log('RSVP clicked - integrate with booking system');
+            // window.location.href = 'https://your-shop.myshopify.com/products/night-vibes-ticket';
         }
 
         function handleVIP() {
-            alert('VIP booking - integrate with your reservation system!');
-            // Example: window.location.href = 'https://your-shop.myshopify.com/products/vip-table-booking';
+            console.log('VIP booking clicked');
+            // window.location.href = 'https://your-shop.myshopify.com/products/vip-table';
         }
 
         function handleShare() {
             if (navigator.share) {
                 navigator.share({
                     title: 'Night Vibes - Harjxt x Double Up Entertainment',
-                    text: 'Check out this amazing nightclub event!',
+                    text: 'Join us for the ultimate nightclub experience!',
                     url: window.location.href,
                 });
             } else {
-                // Fallback for browsers that don't support Web Share API
-                const url = window.location.href;
-                navigator.clipboard.writeText(url);
-                alert('Event link copied to clipboard!');
+                navigator.clipboard.writeText(window.location.href);
+                
+                // Show feedback
+                const btn = event.target;
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '✓ Link Copied';
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                }, 2000);
             }
         }
 
-        // Add some interactive elements
+        // Add smooth interactions
         document.addEventListener('DOMContentLoaded', function() {
-            // Add click animation to buttons
+            // Add click feedback to buttons
             const buttons = document.querySelectorAll('.btn');
             buttons.forEach(button => {
                 button.addEventListener('click', function(e) {
-                    const ripple = document.createElement('div');
-                    const rect = button.getBoundingClientRect();
+                    const ripple = document.createElement('span');
+                    const rect = this.getBoundingClientRect();
                     const size = Math.max(rect.width, rect.height);
+                    
                     ripple.style.width = ripple.style.height = size + 'px';
                     ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
                     ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
-                    ripple.style.position = 'absolute';
-                    ripple.style.borderRadius = '50%';
-                    ripple.style.background = 'rgba(255,255,255,0.3)';
-                    ripple.style.transform = 'scale(0)';
-                    ripple.style.animation = 'ripple 0.6s linear';
-                    ripple.style.pointerEvents = 'none';
+                    ripple.classList.add('ripple');
                     
-                    button.style.position = 'relative';
-                    button.appendChild(ripple);
+                    this.appendChild(ripple);
                     
                     setTimeout(() => {
                         ripple.remove();
@@ -372,7 +427,16 @@
     </script>
 
     <style>
-        @keyframes ripple {
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transform: scale(0);
+            animation: ripple-effect 0.6s linear;
+            pointer-events: none;
+        }
+
+        @keyframes ripple-effect {
             to {
                 transform: scale(4);
                 opacity: 0;
