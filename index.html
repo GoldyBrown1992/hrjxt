@@ -1,271 +1,526 @@
-import React, { useState, useEffect, useRef } from 'react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Night Vibes | Harjxt x Double Up Entertainment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-const NightclubEvent = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false);
-  const heroRef = useRef(null);
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #000000;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
 
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      if (heroRef.current) {
-        const rect = heroRef.current.getBoundingClientRect();
-        setMousePosition({
-          x: ((e.clientX - rect.left) / rect.width) * 100,
-          y: ((e.clientY - rect.top) / rect.height) * 100
-        });
-      }
-    };
+        /* Hero Section with Spotlights */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+        }
 
-    const hero = heroRef.current;
-    if (hero) {
-      hero.addEventListener('mousemove', handleMouseMove);
-      return () => hero.removeEventListener('mousemove', handleMouseMove);
-    }
-  }, []);
-
-  const handleRSVP = () => {
-    console.log('RSVP clicked - integrate with Shopify');
-  };
-
-  const handleVIP = () => {
-    console.log('VIP booking clicked');
-  };
-
-  const handleShare = () => {
-    if (navigator.share) {
-      navigator.share({
-        title: 'Night Vibes - Harjxt x Double Up Entertainment',
-        text: 'Join us for the ultimate nightclub experience!',
-        url: window.location.href,
-      });
-    } else {
-      navigator.clipboard.writeText(window.location.href);
-    }
-  };
-
-  return (
-    <div className="min-h-screen bg-black text-white overflow-hidden">
-      {/* Hero Section with Spotlights */}
-      <div 
-        ref={heroRef}
-        className="relative h-screen flex flex-col justify-center items-center overflow-hidden cursor-pointer"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        style={{
-          background: `
-            radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, 
-              rgba(255, 0, 64, 0.4) 0%, 
-              rgba(255, 0, 64, 0.2) 30%, 
-              transparent 70%),
-            linear-gradient(135deg, #1a1a1a 0%, #000000 100%)
-          `
-        }}
-      >
-        {/* Left Spotlight */}
-        <div 
-          className={`absolute left-0 top-0 w-96 h-full transition-all duration-1000 ${
-            isHovered ? 'opacity-80' : 'opacity-40'
-          }`}
-          style={{
-            background: `
-              conic-gradient(from 0deg at 0% 50%, 
+        /* Left Spotlight */
+        .spotlight-left {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 400px;
+            height: 100%;
+            background: conic-gradient(from 20deg at 0% 50%, 
                 transparent 0deg, 
-                rgba(255, 0, 64, 0.3) 30deg,
-                rgba(255, 255, 255, 0.1) 45deg,
-                rgba(255, 0, 64, 0.3) 60deg,
-                transparent 90deg,
-                transparent 360deg)
-            `,
-            transform: `rotate(${mousePosition.y * 0.1 - 5}deg)`,
-            transformOrigin: 'left center'
-          }}
-        />
+                rgba(255, 0, 64, 0.7) 15deg,
+                rgba(255, 255, 255, 0.4) 25deg,
+                rgba(255, 0, 64, 0.7) 35deg,
+                transparent 50deg);
+            transform-origin: left center;
+            animation: spotlight-sweep-left 12s ease-in-out infinite;
+            pointer-events: none;
+        }
 
-        {/* Right Spotlight */}
-        <div 
-          className={`absolute right-0 top-0 w-96 h-full transition-all duration-1000 ${
-            isHovered ? 'opacity-80' : 'opacity-40'
-          }`}
-          style={{
-            background: `
-              conic-gradient(from 180deg at 100% 50%, 
+        /* Right Spotlight */
+        .spotlight-right {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 400px;
+            height: 100%;
+            background: conic-gradient(from 160deg at 100% 50%, 
                 transparent 0deg, 
-                rgba(255, 0, 64, 0.3) 30deg,
-                rgba(255, 255, 255, 0.1) 45deg,
-                rgba(255, 0, 64, 0.3) 60deg,
-                transparent 90deg,
-                transparent 360deg)
-            `,
-            transform: `rotate(${-mousePosition.y * 0.1 + 5}deg)`,
-            transformOrigin: 'right center'
-          }}
-        />
+                rgba(255, 0, 64, 0.7) 15deg,
+                rgba(255, 255, 255, 0.4) 25deg,
+                rgba(255, 0, 64, 0.7) 35deg,
+                transparent 50deg);
+            transform-origin: right center;
+            animation: spotlight-sweep-right 10s ease-in-out infinite;
+            pointer-events: none;
+        }
 
-        {/* Top Spotlight */}
-        <div 
-          className={`absolute top-0 left-1/2 w-full h-96 transition-all duration-700 ${
-            isHovered ? 'opacity-60' : 'opacity-30'
-          }`}
-          style={{
-            background: `
-              conic-gradient(from 90deg at 50% 0%, 
+        /* Top Spotlight */
+        .spotlight-top {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 100%;
+            height: 300px;
+            background: conic-gradient(from 90deg at 50% 0%, 
                 transparent 0deg, 
-                rgba(255, 255, 255, 0.2) 20deg,
-                rgba(255, 0, 64, 0.2) 40deg,
-                rgba(255, 255, 255, 0.2) 60deg,
-                transparent 80deg,
-                transparent 360deg)
-            `,
-            transform: `translateX(-50%) rotate(${mousePosition.x * 0.05}deg)`,
-            transformOrigin: 'center top'
-          }}
-        />
+                rgba(255, 255, 255, 0.5) 10deg,
+                rgba(255, 0, 64, 0.5) 20deg,
+                rgba(255, 255, 255, 0.5) 30deg,
+                transparent 40deg);
+            transform: translateX(-50%);
+            transform-origin: center top;
+            animation: spotlight-sweep-top 15s linear infinite;
+            pointer-events: none;
+        }
 
-        {/* Animated Particles */}
-        {[...Array(12)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-white rounded-full opacity-60"
-            style={{
-              left: `${10 + (i * 7)}%`,
-              animationDelay: `${i * 0.3}s`,
-              animation: `particleFloat ${4 + (i % 3)}s ease-in-out infinite`
-            }}
-          />
-        ))}
+        @keyframes spotlight-sweep-left {
+            0%, 100% { transform: rotate(-15deg); opacity: 0.6; }
+            25% { transform: rotate(5deg); opacity: 0.9; }
+            50% { transform: rotate(-5deg); opacity: 0.7; }
+            75% { transform: rotate(10deg); opacity: 0.8; }
+        }
 
-        {/* Main Content */}
-        <div className="relative z-10 text-center px-6">
-          <div 
-            className={`transition-all duration-500 ${
-              isHovered ? 'transform scale-105' : ''
-            }`}
-          >
-            <h1 className="text-5xl md:text-7xl font-bold mb-4 tracking-tight">
-              <span className="bg-gradient-to-r from-white to-red-400 bg-clip-text text-transparent">
-                NIGHT VIBES
-              </span>
-            </h1>
-            <p className="text-xl md:text-2xl font-light opacity-90">
-              Harjxt × Double Up Entertainment
+        @keyframes spotlight-sweep-right {
+            0%, 100% { transform: rotate(15deg); opacity: 0.6; }
+            30% { transform: rotate(-5deg); opacity: 0.9; }
+            60% { transform: rotate(5deg); opacity: 0.7; }
+            90% { transform: rotate(-10deg); opacity: 0.8; }
+        }
+
+        @keyframes spotlight-sweep-top {
+            0% { transform: translateX(-50%) rotate(-10deg); }
+            25% { transform: translateX(-50%) rotate(10deg); }
+            50% { transform: translateX(-50%) rotate(-5deg); }
+            75% { transform: translateX(-50%) rotate(15deg); }
+            100% { transform: translateX(-50%) rotate(-10deg); }
+        }
+
+        /* Hero Content */
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff 0%, #ff0040 50%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 0, 64, 0.5);
+            letter-spacing: -2px;
+            line-height: 1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            opacity: 0.9;
+            letter-spacing: 1px;
+        }
+
+        /* Floating Particles */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: particle-float 8s ease-in-out infinite;
+        }
+
+        .particle:nth-child(1) { left: 20%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 40%; animation-delay: 2s; }
+        .particle:nth-child(3) { left: 60%; animation-delay: 4s; }
+        .particle:nth-child(4) { left: 80%; animation-delay: 6s; }
+        .particle:nth-child(5) { left: 30%; animation-delay: 1s; }
+        .particle:nth-child(6) { left: 70%; animation-delay: 3s; }
+
+        @keyframes particle-float {
+            0%, 100% { 
+                transform: translateY(100vh) scale(0.5); 
+                opacity: 0; 
+            }
+            10% { 
+                opacity: 1; 
+                transform: translateY(90vh) scale(1); 
+            }
+            90% { 
+                opacity: 1; 
+                transform: translateY(10vh) scale(1); 
+            }
+            100% { 
+                transform: translateY(0) scale(0.5); 
+                opacity: 0; 
+            }
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator div {
+            width: 24px;
+            height: 40px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 8px;
+        }
+
+        .scroll-indicator div::after {
+            content: '';
+            width: 4px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 2px;
+            animation: scroll-dot 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        @keyframes scroll-dot {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        /* Content Section */
+        .content-section {
+            max-width: 480px;
+            margin: -80px auto 0;
+            padding: 0 16px 32px;
+            position: relative;
+            z-index: 20;
+        }
+
+        /* Cards */
+        .info-card {
+            background: rgba(24, 24, 24, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 24px;
+            margin-bottom: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .detail-row {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .detail-icon {
+            font-size: 18px;
+            margin-right: 16px;
+            width: 24px;
+        }
+
+        .detail-text {
+            font-size: 15px;
+            font-weight: 500;
+            color: #e5e5e5;
+        }
+
+        .description-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ff0040;
+            margin-bottom: 16px;
+        }
+
+        .description-text {
+            color: #d1d5db;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .highlights {
+            list-style: none;
+            padding: 0;
+        }
+
+        .highlights li {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            color: #d1d5db;
+            font-size: 14px;
+        }
+
+        .highlights li::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #ff0040;
+            border-radius: 50%;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        /* Buttons */
+        .btn {
+            width: 100%;
+            padding: 18px 24px;
+            border: none;
+            border-radius: 16px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff0040 0%, #cc0033 100%);
+            color: white;
+            box-shadow: 0 4px 20px rgba(255, 0, 64, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 0, 64, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(24, 24, 24, 0.9);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(40, 40, 40, 0.9);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .host-info {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 12px;
+            color: #6b7280;
+            line-height: 1.5;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .spotlight-left,
+            .spotlight-right {
+                width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .content-section {
+                margin-top: -60px;
+            }
+            
+            .info-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <!-- Spotlight Effects -->
+        <div class="spotlight-left"></div>
+        <div class="spotlight-right"></div>
+        <div class="spotlight-top"></div>
+        
+        <!-- Floating Particles -->
+        <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="hero-content">
+            <h1 class="hero-title">NIGHT VIBES</h1>
+            <p class="hero-subtitle">Harjxt × Double Up Entertainment</p>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <div></div>
+        </div>
+    </section>
+
+    <!-- Event Details Section -->
+    <div class="content-section">
+        <!-- Main Event Info -->
+        <div class="info-card">
+            <div class="detail-row">
+                <span class="detail-icon">📅</span>
+                <span class="detail-text">Saturday, October 12th • 10:00 PM - 3:00 AM</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-icon">📍</span>
+                <span class="detail-text">Downtown Nightclub, Vancouver</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-icon">🎵</span>
+                <span class="detail-text">Live DJ Performance by Harjxt</span>
+            </div>
+        </div>
+
+        <!-- Description Card -->
+        <div class="info-card">
+            <h3 class="description-title">The Ultimate Nightclub Experience</h3>
+            <p class="description-text">
+                Experience Vancouver nightlife like never before. Join us for an exclusive evening 
+                featuring Harjxt's electrifying performance with Double Up Entertainment.
             </p>
-          </div>
+            
+            <ul class="highlights">
+                <li>Exclusive live performance by Harjxt</li>
+                <li>Premium cocktail service & VIP options</li>
+                <li>State-of-the-art sound & lighting system</li>
+                <li>Professional event photography</li>
+                <li>Upscale dress code required</li>
+            </ul>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse" />
-          </div>
-        </div>
-      </div>
-
-      {/* Event Details - Partiful Style Layout */}
-      <div className="max-w-md mx-auto px-4 pb-8 -mt-20 relative z-20">
-        {/* Main Info Card */}
-        <div className="bg-zinc-900/95 backdrop-blur-xl rounded-2xl p-6 mb-4 border border-zinc-800">
-          <div className="space-y-4">
-            <div className="flex items-center text-sm text-zinc-300">
-              <span className="mr-3">📅</span>
-              <span>Saturday, October 12th • 10:00 PM - 3:00 AM</span>
-            </div>
-            <div className="flex items-center text-sm text-zinc-300">
-              <span className="mr-3">📍</span>
-              <span>Downtown Nightclub, Vancouver</span>
-            </div>
-            <div className="flex items-center text-sm text-zinc-300">
-              <span className="mr-3">🎵</span>
-              <span>Live DJ Performance by Harjxt</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Description Card */}
-        <div className="bg-zinc-900/95 backdrop-blur-xl rounded-2xl p-6 mb-4 border border-zinc-800">
-          <h3 className="text-lg font-semibold mb-3 text-red-400">
-            The Ultimate Nightclub Experience
-          </h3>
-          <p className="text-zinc-300 text-sm leading-relaxed mb-4">
-            Experience Vancouver nightlife like never before. Join us for an exclusive evening 
-            featuring Harjxt's electrifying performance with Double Up Entertainment.
-          </p>
-          
-          <div className="space-y-2 text-sm text-zinc-400">
-            <div className="flex items-center">
-              <span className="w-1 h-1 bg-red-400 rounded-full mr-2"></span>
-              <span>Exclusive live performance</span>
-            </div>
-            <div className="flex items-center">
-              <span className="w-1 h-1 bg-red-400 rounded-full mr-2"></span>
-              <span>Premium cocktail service</span>
-            </div>
-            <div className="flex items-center">
-              <span className="w-1 h-1 bg-red-400 rounded-full mr-2"></span>
-              <span>Professional photography</span>
-            </div>
-            <div className="flex items-center">
-              <span className="w-1 h-1 bg-red-400 rounded-full mr-2"></span>
-              <span>Upscale dress code required</span>
-            </div>
-          </div>
-        </div>
-
-        {/* RSVP Button */}
-        <button
-          onClick={handleRSVP}
-          className="w-full bg-gradient-to-r from-red-600 to-red-500 text-white font-semibold py-4 px-6 rounded-2xl mb-3 transition-all duration-200 hover:from-red-500 hover:to-red-400 hover:scale-105 active:scale-95"
-        >
-          🎫 Reserve Your Spot
+        <!-- CTA Buttons -->
+        <button class="btn btn-primary" onclick="handleRSVP()">
+            🎫 Reserve Your Spot
+        </button>
+        <button class="btn btn-secondary" onclick="handleVIP()">
+            ⭐ VIP Table Booking
+        </button>
+        <button class="btn btn-secondary" onclick="handleShare()">
+            📱 Share Event
         </button>
 
-        {/* Secondary Buttons */}
-        <div className="space-y-2">
-          <button
-            onClick={handleVIP}
-            className="w-full bg-zinc-800/80 backdrop-blur-sm text-white font-medium py-3 px-6 rounded-xl border border-zinc-700 transition-all duration-200 hover:bg-zinc-700/80 hover:scale-102"
-          >
-            ⭐ VIP Table Booking
-          </button>
-          <button
-            onClick={handleShare}
-            className="w-full bg-zinc-800/80 backdrop-blur-sm text-white font-medium py-3 px-6 rounded-xl border border-zinc-700 transition-all duration-200 hover:bg-zinc-700/80 hover:scale-102"
-          >
-            📱 Share Event
-          </button>
+        <!-- Host Information -->
+        <div class="host-info">
+            <p>Upon arrival, please contact our host for VIP access</p>
+            <p>Presented by Double Up Entertainment</p>
         </div>
-
-        {/* Host Info */}
-        <div className="text-center mt-6 text-xs text-zinc-500">
-          <p>Upon arrival, please contact our host for VIP access</p>
-          <p className="mt-1">Presented by Double Up Entertainment</p>
-        </div>
-      </div>
-
-      {/* Custom Animations */}
-      <style jsx>{`
-        @keyframes particleFloat {
-          0%, 100% { 
-            transform: translateY(0) scale(1); 
-            opacity: 0.3; 
-          }
-          50% { 
-            transform: translateY(-100px) scale(1.2); 
-            opacity: 0.8; 
-          }
-        }
-        
-        .hover\\:scale-102:hover {
-          transform: scale(1.02);
-        }
-        
-        @media (max-width: 768px) {
-          .hero-section h1 {
-            font-size: 3rem;
-          }
-        }
-      `}</style>
     </div>
-  );
-};
 
-export default NightclubEvent;
+    <script>
+        function handleRSVP() {
+            alert('RSVP functionality - integrate with Shopify!');
+            // window.location.href = 'https://your-shop.myshopify.com/products/night-vibes-ticket';
+        }
+
+        function handleVIP() {
+            alert('VIP booking - integrate with reservation system!');
+            // window.location.href = 'https://your-shop.myshopify.com/products/vip-table';
+        }
+
+        function handleShare() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Night Vibes - Harjxt x Double Up Entertainment',
+                    text: 'Join us for the ultimate nightclub experience!',
+                    url: window.location.href,
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert('Event link copied to clipboard!');
+            }
+        }
+
+        // Add button click effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const ripple = document.createElement('span');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    
+                    ripple.style.width = ripple.style.height = size + 'px';
+                    ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+                    ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+                    ripple.style.position = 'absolute';
+                    ripple.style.borderRadius = '50%';
+                    ripple.style.background = 'rgba(255,255,255,0.3)';
+                    ripple.style.transform = 'scale(0)';
+                    ripple.style.animation = 'ripple 0.6s linear';
+                    ripple.style.pointerEvents = 'none';
+                    
+                    this.style.position = 'relative';
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+        });
+    </script>
+
+    <style>
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+    </style>
+</body>
+</html>
