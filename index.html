@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harjxt | Harjxt x Double Up Entertainment</title>
+    <title>Suroor Nights | Double Up Entertainment</title>
     <style>
         * {
             margin: 0;
@@ -31,34 +31,34 @@
             z-index: 1;
         }
 
-        /* Moving Spotlights */
+        /* Moving Spotlights - Updated to silver tones */
         .moving-spotlight {
             position: absolute;
             width: 300px;
             height: 300px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 0, 100, 0.4) 0%, rgba(255, 0, 100, 0.1) 50%, transparent 100%);
+            background: radial-gradient(circle, rgba(192, 192, 192, 0.4) 0%, rgba(192, 192, 192, 0.1) 50%, transparent 100%);
             animation: spotlight-dance 8s ease-in-out infinite;
         }
 
         .moving-spotlight:nth-child(1) {
             top: 10%;
             left: 20%;
-            background: radial-gradient(circle, rgba(0, 255, 255, 0.4) 0%, rgba(0, 255, 255, 0.1) 50%, transparent 100%);
+            background: radial-gradient(circle, rgba(200, 200, 200, 0.4) 0%, rgba(200, 200, 200, 0.1) 50%, transparent 100%);
             animation: spotlight-dance-1 12s ease-in-out infinite;
         }
 
         .moving-spotlight:nth-child(2) {
             top: 60%;
             right: 15%;
-            background: radial-gradient(circle, rgba(255, 255, 0, 0.4) 0%, rgba(255, 255, 0, 0.1) 50%, transparent 100%);
+            background: radial-gradient(circle, rgba(169, 169, 169, 0.4) 0%, rgba(169, 169, 169, 0.1) 50%, transparent 100%);
             animation: spotlight-dance-2 10s ease-in-out infinite;
         }
 
         .moving-spotlight:nth-child(3) {
             bottom: 20%;
             left: 10%;
-            background: radial-gradient(circle, rgba(255, 0, 255, 0.4) 0%, rgba(255, 0, 255, 0.1) 50%, transparent 100%);
+            background: radial-gradient(circle, rgba(211, 211, 211, 0.4) 0%, rgba(211, 211, 211, 0.1) 50%, transparent 100%);
             animation: spotlight-dance-3 14s ease-in-out infinite;
         }
 
@@ -83,7 +83,7 @@
             80% { transform: translate(150px, -300px) scale(1.3); opacity: 0.8; }
         }
 
-        /* Laser Light Show */
+        /* Laser Light Show - Updated to silver/white tones */
         .laser-show {
             position: absolute;
             top: 0;
@@ -103,28 +103,28 @@
         .laser-beam:nth-child(1) {
             top: 20%;
             width: 100%;
-            color: #ff0066;
+            color: #c0c0c0;
             animation: laser-sweep-1 4s linear infinite;
         }
 
         .laser-beam:nth-child(2) {
             top: 40%;
             width: 100%;
-            color: #00ffff;
+            color: #d3d3d3;
             animation: laser-sweep-2 6s linear infinite;
         }
 
         .laser-beam:nth-child(3) {
             top: 60%;
             width: 100%;
-            color: #ffff00;
+            color: #a9a9a9;
             animation: laser-sweep-3 5s linear infinite;
         }
 
         .laser-beam:nth-child(4) {
             top: 80%;
             width: 100%;
-            color: #ff6600;
+            color: #dcdcdc;
             animation: laser-sweep-4 7s linear infinite;
         }
 
@@ -241,14 +241,14 @@
             50% { transform: translateY(-10px) scale(1.1); }
         }
 
-        /* Pulsing Bass Effect */
+        /* Pulsing Bass Effect - Updated to silver tone */
         .bass-pulse {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(ellipse at bottom, rgba(255, 0, 64, 0.1) 0%, transparent 50%);
+            background: radial-gradient(ellipse at bottom, rgba(192, 192, 192, 0.1) 0%, transparent 50%);
             animation: bass-thump 1.2s ease-in-out infinite;
         }
 
@@ -257,7 +257,7 @@
             50% { transform: scaleY(1.1); opacity: 0.6; }
         }
 
-        /* Floating Party Particles */
+        /* Floating Party Particles - Updated with silver tones */
         .party-particles {
             position: absolute;
             top: 0;
@@ -275,14 +275,14 @@
             animation: party-float 8s linear infinite;
         }
 
-        .party-particle:nth-child(1) { left: 10%; color: #ff0066; animation-delay: 0s; }
-        .party-particle:nth-child(2) { left: 30%; color: #00ffff; animation-delay: 1s; }
-        .party-particle:nth-child(3) { left: 50%; color: #ffff00; animation-delay: 2s; }
-        .party-particle:nth-child(4) { left: 70%; color: #ff6600; animation-delay: 3s; }
-        .party-particle:nth-child(5) { left: 90%; color: #ff00ff; animation-delay: 4s; }
-        .party-particle:nth-child(6) { left: 20%; color: #00ff66; animation-delay: 0.5s; }
-        .party-particle:nth-child(7) { left: 60%; color: #6600ff; animation-delay: 1.5s; }
-        .party-particle:nth-child(8) { left: 80%; color: #ff3300; animation-delay: 2.5s; }
+        .party-particle:nth-child(1) { left: 10%; color: #c0c0c0; animation-delay: 0s; }
+        .party-particle:nth-child(2) { left: 30%; color: #d3d3d3; animation-delay: 1s; }
+        .party-particle:nth-child(3) { left: 50%; color: #a9a9a9; animation-delay: 2s; }
+        .party-particle:nth-child(4) { left: 70%; color: #dcdcdc; animation-delay: 3s; }
+        .party-particle:nth-child(5) { left: 90%; color: #b8b8b8; animation-delay: 4s; }
+        .party-particle:nth-child(6) { left: 20%; color: #e0e0e0; animation-delay: 0.5s; }
+        .party-particle:nth-child(7) { left: 60%; color: #cdcdcd; animation-delay: 1.5s; }
+        .party-particle:nth-child(8) { left: 80%; color: #f5f5f5; animation-delay: 2.5s; }
 
         @keyframes party-float {
             0% { 
@@ -336,23 +336,24 @@
             font-size: 3.5rem;
             font-weight: 800;
             margin-bottom: 20px;
-            background: linear-gradient(135deg, #ffffff 0%, #ff0040 50%, #ffffff 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #c0c0c0 50%, #ffffff 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             letter-spacing: -2px;
             animation: title-pulse 4s ease-in-out infinite;
-            text-shadow: 0 0 30px rgba(255, 0, 64, 0.3);
+            text-shadow: 0 0 30px rgba(192, 192, 192, 0.5);
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
         }
 
         @keyframes title-pulse {
             0%, 100% { 
                 transform: scale(1); 
-                filter: brightness(1);
+                filter: brightness(1) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
             }
             50% { 
                 transform: scale(1.02); 
-                filter: brightness(1.2);
+                filter: brightness(1.3) drop-shadow(0 0 30px rgba(255, 255, 255, 0.5));
             }
         }
 
@@ -393,7 +394,7 @@
         }
 
         .timezone-btn:hover {
-            border-color: #ff0040;
+            border-color: #c0c0c0;
         }
 
         .remind-me {
@@ -418,8 +419,8 @@
         }
 
         .remind-btn:hover {
-            border-color: #ff0040;
-            background: rgba(255, 0, 64, 0.1);
+            border-color: #c0c0c0;
+            background: rgba(192, 192, 192, 0.1);
         }
 
         .more-btn {
@@ -438,7 +439,7 @@
         }
 
         .more-btn:hover {
-            border-color: #ff0040;
+            border-color: #c0c0c0;
         }
 
         .event-info {
@@ -469,12 +470,12 @@
             justify-content: center;
         }
 
-        /* Custom Icons */
+        /* Custom Icons - Updated to silver gradients */
         .icon-host::before {
             content: '';
             width: 16px;
             height: 16px;
-            background: linear-gradient(135deg, #ff0040 0%, #ff6b9d 100%);
+            background: linear-gradient(135deg, #c0c0c0 0%, #a9a9a9 100%);
             mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E") no-repeat center;
             mask-size: contain;
         }
@@ -483,7 +484,7 @@
             content: '';
             width: 16px;
             height: 16px;
-            background: linear-gradient(135deg, #00ffff 0%, #0099cc 100%);
+            background: linear-gradient(135deg, #d3d3d3 0%, #b8b8b8 100%);
             mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z'/%3E%3Ccircle cx='12' cy='10' r='3'/%3E%3C/svg%3E") no-repeat center;
             mask-size: contain;
         }
@@ -492,7 +493,7 @@
             content: '';
             width: 16px;
             height: 16px;
-            background: linear-gradient(135deg, #ffff00 0%, #ffa500 100%);
+            background: linear-gradient(135deg, #dcdcdc 0%, #cdcdcd 100%);
             mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='9' cy='7' r='4'/%3E%3Cpath d='M23 21v-2a4 4 0 0 0-3-3.87'/%3E%3Cpath d='M16 3.13a4 4 0 0 1 0 7.75'/%3E%3C/svg%3E") no-repeat center;
             mask-size: contain;
         }
@@ -501,7 +502,7 @@
             content: '';
             width: 16px;
             height: 16px;
-            background: linear-gradient(135deg, #ff6600 0%, #ff3300 100%);
+            background: linear-gradient(135deg, #e0e0e0 0%, #a9a9a9 100%);
             mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpolyline points='12,6 12,12 16,14'/%3E%3C/svg%3E") no-repeat center;
             mask-size: contain;
         }
@@ -510,7 +511,7 @@
             content: '';
             width: 16px;
             height: 16px;
-            background: linear-gradient(135deg, #ff00ff 0%, #cc00cc 100%);
+            background: linear-gradient(135deg, #f5f5f5 0%, #d3d3d3 100%);
             mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M6 2l3 6v14a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V8l3-6'/%3E%3Cpath d='M12 2v6'/%3E%3C/svg%3E") no-repeat center;
             mask-size: contain;
         }
@@ -519,7 +520,7 @@
             content: '';
             width: 16px;
             height: 16px;
-            background: linear-gradient(135deg, #00ff66 0%, #00cc44 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #c0c0c0 100%);
             mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'/%3E%3C/svg%3E") no-repeat center;
             mask-size: contain;
         }
@@ -566,10 +567,10 @@
         }
 
         .rsvp-button:hover {
-            background: linear-gradient(135deg, #ff0040 0%, #cc0033 100%);
+            background: linear-gradient(135deg, #c0c0c0 0%, #a9a9a9 100%);
             color: white;
             transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 8px 25px rgba(255, 0, 64, 0.4);
+            box-shadow: 0 8px 25px rgba(192, 192, 192, 0.4);
         }
 
         @keyframes button-glow {
@@ -577,7 +578,7 @@
             50% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); }
         }
 
-        /* Right Side - Event Poster */
+        /* Right Side - Event Poster - Updated to silver */
         .event-poster {
             flex: 1;
             max-width: 350px;
@@ -586,7 +587,7 @@
 
         .poster-container {
             position: relative;
-            background: linear-gradient(135deg, #ff0040 0%, #8b0000 100%);
+            background: linear-gradient(135deg, #c0c0c0 0%, #808080 100%);
             border-radius: 12px;
             overflow: hidden;
             aspect-ratio: 9/16;
@@ -605,7 +606,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: conic-gradient(from 45deg, transparent 0deg, rgba(255, 255, 255, 0.1) 90deg, transparent 180deg);
+            background: conic-gradient(from 45deg, transparent 0deg, rgba(255, 255, 255, 0.2) 90deg, transparent 180deg);
             animation: poster-shine 8s linear infinite;
             pointer-events: none;
         }
@@ -626,6 +627,7 @@
             letter-spacing: 2px;
             margin-bottom: 20px;
             opacity: 0.9;
+            color: #000000;
         }
 
         .poster-title {
@@ -634,12 +636,14 @@
             line-height: 0.9;
             margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: #000000;
         }
 
         .poster-subtitle {
             font-size: 1.8rem;
             font-weight: 700;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: #000000;
         }
 
         .poster-footer {
@@ -649,6 +653,7 @@
             font-size: 10px;
             letter-spacing: 1px;
             opacity: 0.8;
+            color: #000000;
         }
 
         /* Background particles for poster */
@@ -711,7 +716,7 @@
             }
         }
 
-        /* Subtle background animation */
+        /* Subtle background animation - Updated to silver tones */
         body::before {
             content: '';
             position: fixed;
@@ -719,8 +724,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 20% 80%, rgba(255, 0, 64, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, rgba(139, 0, 0, 0.1) 0%, transparent 50%);
+            background: radial-gradient(circle at 20% 80%, rgba(192, 192, 192, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(169, 169, 169, 0.1) 0%, transparent 50%);
             animation: bg-shift 10s ease-in-out infinite alternate;
             z-index: -1;
         }
@@ -790,7 +795,7 @@
             
             <div class="remind-me">
                 <button class="remind-btn" onclick="handleReminder()">
-                    <span>🔔</span>
+                    <span class="icon-bell"></span>
                     Remind me later
                 </button>
                 <button class="more-btn">⋯</button>
@@ -798,27 +803,27 @@
             
             <ul class="event-info">
                 <li>
-                    <span class="icon">👑</span>
+                    <span class="icon icon-host"></span>
                     <span><strong>Hosted by</strong> Double Up Entertainment</span>
                 </li>
                 <li>
-                    <span class="icon">📍</span>
+                    <span class="icon icon-location"></span>
                     <span>Get on the list to see location</span>
                 </li>
                 <li>
-                    <span class="icon">👥</span>
+                    <span class="icon icon-people"></span>
                     <span>45/80 spots left</span>
                 </li>
                 <li>
-                    <span class="icon">⏰</span>
+                    <span class="icon icon-time"></span>
                     <span>RSVP by 8:00pm today</span>
                 </li>
                 <li>
-                    <span class="icon">👔</span>
+                    <span class="icon icon-dress"></span>
                     <span>Dress sharp, fashionable with style.</span>
                 </li>
                 <li>
-                    <span class="icon">🚗</span>
+                    <span class="icon icon-vip"></span>
                     <span>VIP entry & premium cocktails</span>
                 </li>
             </ul>
@@ -839,12 +844,13 @@
                 </div>
                 
                 <div class="poster-header">
-                    <div class="poster-invite">DOUBLE UP ENTERTAINMENT PRESENTS LIVE IN CONCERT</div>
-                    <div class="poster-title">Harjxt</div>
-                                   </div>
+                    <div class="poster-invite">DOUBLE UP ENTERTAINMENT PRESENTS</div>
+                    <div class="poster-title">SUROOR</div>
+                    <div class="poster-subtitle">NIGHTS</div>
+                </div>
                 
                 <div class="poster-footer">
-                    <div>FRIDAY | OCTOBER 12TH | PRIVATE VENUE INVITE ONLY</div>
+                    <div>SATURDAY | OCTOBER 12TH | PRIVATE VENUE INVITE ONLY</div>
                 </div>
             </div>
         </div>
@@ -853,7 +859,7 @@
     <script>
         function handleRSVP() {
             alert('RSVP functionality - integrate with Shopify!');
-            // window.location.href = 'https://your-shop.myshopify.com/products/night-vibes-ticket';
+            // window.location.href = 'https://your-shop.myshopify.com/products/suroor-nights-ticket';
         }
 
         function handleReminder() {
